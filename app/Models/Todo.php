@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Todo extends Model
 {
-    use HasFactory;
+    protected $table = "todo";
+    protected $guarded = array("id");
+
+    public static $rules = array(
+        "title" => "required",
+        "comment" => "required",
+    );
+
 }
