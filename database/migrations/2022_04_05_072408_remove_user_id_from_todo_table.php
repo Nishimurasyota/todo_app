@@ -13,14 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('todo', function (Blueprint $table) {
-            $table->increments("id");
-            $table->string('title');
-            $table->string('comment');
-            $table->integer('user_id');
-            $table->timestamps();
+        Schema::table('todo', function (Blueprint $table) {
+            $table->dropColumn('user_id');
         });
-
     }
 
     /**
@@ -30,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('todo');
+        Schema::table('todo', function (Blueprint $table) {
+            $table->integer('user_id');
+        });
     }
 };
