@@ -21,8 +21,8 @@
     <div>
         <table>
             <tr>
-                <th>タイトル</th>
-                <th>コメント</th>
+                <th><a href="/todo?sort=title">タイトル</a></th>
+                <th><a href="/todo?sort=comment">コメント</a></th>
                 <th>User ID</th>
             </tr>
             @foreach ($todos as $todo)
@@ -33,7 +33,7 @@
             </tr>
             @endforeach
         </table>
-        {{$todos->links()}}
+        {{$todos->appends(["sort" => $sort])->links()}}
     </div>
 
     <div class="createForm">
@@ -43,11 +43,11 @@
             <table class="create_todo_field">
                 <tr>
                     <th>タイトル</th>
-                    <td><input class="new_title" type="text" name="comment" value='{{old("comment")}}'></td>
+                    <td><input class="new_title" type="text" name="title" value='{{old("comment")}}'></td>
                 </tr>
                 <tr>
                     <th>コメント</th>
-                    <td><input class="new_comment" type="text" name="title" value='{{old("title")}}'></td>
+                    <td><input class="new_comment" type="text" name="comment" value='{{old("title")}}'></td>
                 </tr>
 
             </table>

@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\DB;
 class TodoController extends Controller
 {
     // ログインしていない場合のアクセス制限をかける
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
     /**
@@ -18,11 +19,16 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $sort = $request->sort;
+        if (is_null($sort)) {
+            $sort = "id";
+        }
         $user = Auth::user();
-        $todos = Todo::orderBy('title', 'asc')->simplePaginate(3);
-        return view('todo.index', ["todos" => $todos, "user" => $user]);
+        $todos = Todo::orderBy("comment", 'desc')->simplePaginate(5);
+        $param = ["todos" => $todos, "sort" => $sort, "user" => $user];
+        return view('todo.index', $param);
     }
 
     /**
