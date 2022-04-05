@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class TodoController extends Controller
 {
@@ -20,7 +21,7 @@ class TodoController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $todos = Todo::all();
+        $todos = Todo::orderBy('title', 'asc')->simplePaginate(3);
         return view('todo.index', ["todos" => $todos, "user" => $user]);
     }
 

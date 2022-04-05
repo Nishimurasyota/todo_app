@@ -4,7 +4,7 @@
 
 @section("auth")
 @if(Auth::check())
-  <p>User: {{$user->name}}</p>
+<p>User: {{$user->name}}</p>
 @else
 <p>ログインしていません</p>
 (<a href="/login">ログイン</a>/<a href="/register">登録</a>)
@@ -33,6 +33,7 @@
             </tr>
             @endforeach
         </table>
+        {{$todos->links()}}
     </div>
 
     <div class="createForm">
