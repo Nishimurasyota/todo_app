@@ -19,7 +19,3 @@ Route::get('/', function () {
 });
 
 Route::resource("todo", TodoController::class);
-
-Route::get('scss', function () {
-    return view('todo.index');
-});

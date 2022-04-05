@@ -8,19 +8,20 @@
 @endsection
 
 @section("content")
-
-<table>
-    <tr>
-        <th>タイトル</th>
-        <th>コメント</th>
-    </tr>
-    @foreach ($todos as $todo)
-    <tr>
-        <td><a href="{{route('todo.show', $todo->id)}}">{{$todo->title}}</a></td>
-        <td>{{$todo->comment}}</td>
-    </tr>
-    @endforeach
-</table>
+<div class="index">
+    <table>
+        <tr>
+            <th>タイトル</th>
+            <th>コメント</th>
+        </tr>
+        @foreach ($todos as $todo)
+        <tr>
+            <td><a href="{{route('todo.show', $todo->id)}}">{{$todo->title}}</a></td>
+            <td>{{$todo->comment}}</td>
+        </tr>
+        @endforeach
+    </table>
+</div>
 
 @endsection
 
