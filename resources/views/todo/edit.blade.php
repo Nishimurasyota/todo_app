@@ -17,7 +17,7 @@
         @endforeach
     </ul>
 </div>
-
+@endif
 <form action="{{route('todo.update', $todo->id)}}" method="post">
     @csrf
     @method("patch")

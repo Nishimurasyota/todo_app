@@ -20,11 +20,20 @@
             <td>{{$todo->comment}}</td>
             @if($todo->user->id === $user->id)
             <td class="editAndDeleteBtn">
-                <button><a href="{{route('todo.edit',$todo->id)}}">編集</a></button>
+            <a href="{{route('todo.edit',$todo->id)}}"><button>編集</button></a>
                 <form action="" method="post">
                     @csrf
                     @method("delete")
                     <input type="submit" value="削除">
+                </form>
+            </td>
+            @else
+            <td disabled>
+            <a href="{{route('todo.edit',$todo->id)}}"><button disabled>編集</button></a>
+                <form action="" method="post">
+                    @csrf
+                    @method("delete")
+                    <input disabled type="submit" value="削除">
                 </form>
             </td>
             @endif
