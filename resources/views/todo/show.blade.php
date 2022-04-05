@@ -18,7 +18,15 @@
         <tr>
             <td>{{$todo->title}}</td>
             <td>{{$todo->comment}}</td>
-            <td><a href="{{route('todo.edit',$todo->id)}}">編集</a></td>
+            <td class="editAndDeleteBtn">
+                <button><a href="{{route('todo.edit',$todo->id)}}">編集</a></button>
+                /
+                <form action="" method="post">
+                    @csrf
+                    @method("delete")
+                    <input type="submit" value="削除">
+                </form>
+            </td>
         </tr>
     </table>
 
