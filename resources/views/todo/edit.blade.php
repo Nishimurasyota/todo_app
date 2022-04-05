@@ -9,13 +9,22 @@
 
 @section("content")
 
-    <form action="{{route('todo.update', $todo->id)}}" method="post">
-        @csrf
-        @method("patch")
-        <input class="edit_text" type="text" name="title" value="{{$todo->title}}">
-        <input class="edit_comment" type="text" name="comment" value="{{$todo->comment}}">
-        <input type="submit" value="更新">
-    </form>
+@if(count($errors)> 0)
+<div>
+    <ul>
+        @foreach($errors->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
+
+<form action="{{route('todo.update', $todo->id)}}" method="post">
+    @csrf
+    @method("patch")
+    <input class="edit_text" type="text" name="title" value="{{$todo->title}}">
+    <input class="edit_comment" type="text" name="comment" value="{{$todo->comment}}">
+    <input type="submit" value="更新">
+</form>
 
 @endsection
 

@@ -20,7 +20,6 @@
             <td>{{$todo->comment}}</td>
             <td class="editAndDeleteBtn">
                 <button><a href="{{route('todo.edit',$todo->id)}}">編集</a></button>
-                /
                 <form action="" method="post">
                     @csrf
                     @method("delete")
@@ -30,7 +29,7 @@
         </tr>
     </table>
 
-    <button>
+    <button class="backIndex">
         <a href="{{route('todo.index')}}">一覧に戻る</a>
     </button>
 

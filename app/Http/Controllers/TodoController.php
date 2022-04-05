@@ -35,7 +35,12 @@ class TodoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, Todo::$rules);
+        $todo = new Todo;
+        $form = $request->all();
+        unset($form["_token"]);
+        $todo->fill($form)->save();
+        return redirect("/todo");
     }
 
     /**
@@ -71,6 +76,7 @@ class TodoController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, Todo::$rules);
         $todo = Todo::find($id);
         $form = $request->all();
         unset($form['_token']);
