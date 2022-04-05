@@ -57,8 +57,9 @@ class TodoController extends Controller
      */
     public function show($id)
     {
+        $user = Auth::user();
         $todo = Todo::find($id);
-        return view("todo.show", ["todo" => $todo]);
+        return view("todo.show", ["todo" => $todo, "user" => $user]);
     }
 
     /**
