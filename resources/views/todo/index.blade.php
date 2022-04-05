@@ -23,11 +23,13 @@
             <tr>
                 <th>タイトル</th>
                 <th>コメント</th>
+                <th>User ID</th>
             </tr>
             @foreach ($todos as $todo)
             <tr>
                 <td><a href="{{route('todo.show', $todo->id)}}">{{$todo->title}}</a></td>
                 <td>{{$todo->comment}}</td>
+                <td>{{$todo->user->id}}</td>
             </tr>
             @endforeach
         </table>
@@ -36,6 +38,7 @@
     <div class="createForm">
         <form class="createForm" action="/todo" method="post">
             @csrf
+            <input type="hidden" name="user_id" value='{{$user->id}}'>
             <table class="create_todo_field">
                 <tr>
                     <th>タイトル</th>

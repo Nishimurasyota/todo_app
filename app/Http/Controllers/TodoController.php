@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
+    // ログインしていない場合のアクセス制限をかける
+    public function __construct(){
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
