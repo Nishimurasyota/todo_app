@@ -4,7 +4,7 @@
 
 @section("menubar")
 @parent
-一覧ページ
+詳細ページ
 @endsection
 
 @section("content")
@@ -14,12 +14,10 @@
         <th>タイトル</th>
         <th>コメント</th>
     </tr>
-    @foreach ($todos as $todo)
     <tr>
-        <td><a href="{{route('todo.show', $todo->id)}}">{{$todo->title}}</a></td>
+        <td>{{$todo->title}}</td>
         <td>{{$todo->comment}}</td>
     </tr>
-    @endforeach
 </table>
 
 @endsection
