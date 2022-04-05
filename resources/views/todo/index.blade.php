@@ -2,6 +2,15 @@
 
 @section("title", "Todo一覧")
 
+@section("auth")
+@if(Auth::check())
+  <p>User: {{$user->name}}</p>
+@else
+<p>ログインしていません</p>
+(<a href="/login">ログイン</a>/<a href="/register">登録</a>)
+@endif
+@endsection
+
 @section("menubar")
 @parent
 一覧ページ

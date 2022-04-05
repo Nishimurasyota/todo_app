@@ -9,7 +9,10 @@
 </head>
 
 <body>
-    <h1>@yield("title")</h1>
+    <header>
+        <h1>@yield("title")</h1>
+        <p>@yield("auth")</p>
+    </header>
     @section("menubar")
 
     <div class="content">

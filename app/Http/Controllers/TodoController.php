@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
@@ -14,8 +15,9 @@ class TodoController extends Controller
      */
     public function index()
     {
+        $user = Auth::user();
         $todos = Todo::all();
-        return view('todo.index', ["todos" => $todos]);
+        return view('todo.index', ["todos" => $todos, "user" => $user]);
     }
 
     /**
