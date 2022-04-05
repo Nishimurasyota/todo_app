@@ -3,12 +3,15 @@ html {
     table{
         margin: auto;
     }
+    input{
+        width: 100%;
+    }
 }
 
 .index {
 
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
 
     tr th {
@@ -20,6 +23,10 @@ html {
     tr td {
         border: 1px solid #000;
         padding: 5px;
+    }
+
+    .createForm{
+        width: 24vw;
     }
 }
 

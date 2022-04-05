@@ -4,10 +4,13 @@ html {
 html table {
   margin: auto;
 }
+html input {
+  width: 100%;
+}
 
 .index {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 .index tr th {
@@ -19,6 +22,15 @@ html table {
 .index tr td {
   border: 1px solid #000;
   padding: 5px;
+}
+.index .createForm {
+  width: 24vw;
+}
+.index .createForm form table input .new_title {
+  height: 80%;
+}
+.index .createForm form table input .new_comment {
+  height: 80%;
 }
 
 .show tr th {

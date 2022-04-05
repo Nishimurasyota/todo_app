@@ -24,17 +24,17 @@
         </table>
     </div>
 
-    <div>
+    <div class="createForm">
         <form class="createForm" action="/todo" method="post">
             @csrf
-            <table>
+            <table class="create_todo_field">
                 <tr>
                     <th>タイトル</th>
-                    <td><input type="text" name="comment" value='{{old("comment")}}'></td>
+                    <td><input class="new_title" type="text" name="comment" value='{{old("comment")}}'></td>
                 </tr>
                 <tr>
                     <th>コメント</th>
-                    <td><input type="text" name="title" value='{{old("title")}}'></td>
+                    <td><input class="new_comment" type="text" name="title" value='{{old("title")}}'></td>
                 </tr>
 
             </table>
