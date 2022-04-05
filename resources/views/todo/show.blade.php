@@ -20,6 +20,10 @@
     </tr>
 </table>
 
+<div>
+    <a href="{{route('todo.index')}}">一覧に戻る</a>
+</div>
+
 @endsection
 
 @section("footer")
