@@ -26,7 +26,7 @@ class TodoController extends Controller
             $sort = "id";
         }
         $user = Auth::user();
-        $todos = Todo::orderBy("comment", 'desc')->simplePaginate(5);
+        $todos = Todo::orderBy($sort, 'asc')->simplePaginate(5);
         $param = ["todos" => $todos, "sort" => $sort, "user" => $user];
         return view('todo.index', $param);
     }
