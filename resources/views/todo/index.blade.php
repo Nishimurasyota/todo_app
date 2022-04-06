@@ -18,46 +18,56 @@
 
 @section("content")
 <div class="index">
+    @if(count($errors)> 0)
     <div>
-        <table>
-            <tr>
-                <th><a href="/todo?sort=title">タイトル</a></th>
-                <th><a href="/todo?sort=comment">コメント</a></th>
-                <th>User ID</th>
-            </tr>
-            @foreach ($todos as $todo)
-            <tr>
-                <td><a href="{{route('todo.show', $todo->id)}}">{{$todo->title}}</a></td>
-                <td>{{$todo->comment}}</td>
-                <td>{{$todo->user->id}}</td>
-            </tr>
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
             @endforeach
-        </table>
-        {{$todos->appends(["sort" => $sort])->links()}}
+        </ul>
     </div>
-
-    <div class="createForm">
-        <form class="createForm" action="/todo" method="post">
-            @csrf
-            <input type="hidden" name="user_id" value='{{$user->id}}'>
-            <table class="create_todo_field">
+    @endif
+    <div class="flexBox">
+        <div>
+            <table>
                 <tr>
-                    <th>タイトル</th>
-                    <td><input class="new_title" type="text" name="title" value='{{old("comment")}}'></td>
+                    <th><a href="/todo?sort=title">タイトル</a></th>
+                    <th><a href="/todo?sort=comment">コメント</a></th>
+                    <th>ユーザー名</th>
                 </tr>
+                @foreach ($todos as $todo)
                 <tr>
-                    <th>コメント</th>
-                    <td><input class="new_comment" type="text" name="comment" value='{{old("title")}}'></td>
+                    <td><a href="{{route('todo.show', $todo->id)}}">{{$todo->title}}</a></td>
+                    <td>{{$todo->comment}}</td>
+                    <td>{{$todo->user->name}}</td>
                 </tr>
-
+                @endforeach
             </table>
-            <tr>
-                <th></th>
-                <td><input type="submit" value="Todo作成"></td>
-            </tr>
-        </form>
-    </div>
+            {{$todos->appends(["sort" => $sort])->links()}}
+        </div>
 
+        <div class="createForm">
+            <form class="createForm" action="/todo" method="post">
+                @csrf
+                <input type="hidden" name="user_id" value='{{$user->id}}'>
+                <table class="create_todo_field">
+                    <tr>
+                        <th>タイトル</th>
+                        <td><input class="new_title" type="text" name="title" value='{{old("comment")}}'></td>
+                    </tr>
+                    <tr>
+                        <th>コメント</th>
+                        <td><input class="new_comment" type="text" name="comment" value='{{old("title")}}'></td>
+                    </tr>
+
+                </table>
+                <tr>
+                    <th></th>
+                    <td><input type="submit" value="Todo作成"></td>
+                </tr>
+            </form>
+        </div>
+    </div>
 </div>
 
 @endsection

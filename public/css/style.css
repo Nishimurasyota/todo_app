@@ -8,7 +8,7 @@ html input {
   width: 100%;
 }
 
-.index {
+.index .flexBox{
   display: flex;
   justify-content: center;
   align-items: center;

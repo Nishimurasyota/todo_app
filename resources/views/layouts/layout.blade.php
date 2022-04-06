@@ -23,5 +23,6 @@
         @yield("footer")
     </div>
 </body>
+<script src="{{ mix('js/sample.js') }}"></script>
 
 </html>
